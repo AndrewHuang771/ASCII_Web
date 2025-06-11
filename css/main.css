@@ -1,0 +1,21 @@
+:root {
+    --game-width: 35vw;
+    --color-primary: white;
+    --color-secondary: black;
+    --font-medium: 16px;
+    --font-large: 30px;
+    --font-family: monospace;
+    --line-height: 16px;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    font-size: var(--font-medium);
+    line-height: var(--line-height);
+    color: var(--color-secondary);
+    background-color: var(--color-primary);
+    /* overflow: hidden; */
+    white-space: nowrap;
+    user-select: none;
+}

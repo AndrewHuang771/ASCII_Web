@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@types/node": "^22.10.2",
+    "alea": "^1.0.1",
+    "simplex-noise": "^4.0.3"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
+  }
+}

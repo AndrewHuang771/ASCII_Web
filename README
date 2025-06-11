@@ -1,0 +1,6 @@
+To contribute: Clone repo and run npm install
+To run in watch mode: npx webpack --watch --mode development
+
+In progres:
+Actions
+copyASCII art map editor
