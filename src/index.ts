@@ -13,8 +13,9 @@ const generatorFunction2 = (x: number, y: number, t: number) => {
     const scalemapIdx = Math.floor(scalemap.length / 2) + Math.floor(scalemap.length / 2 * noise3D((x + 100000) * 0.005, (y + 100000) * 0.005, 0.005 * t));
     return scalemap[scalemapIdx];
 }
+const basestr = "=UwU=";
 const generatorFunction3 = (x: number, y: number, t: number) => {
-    return scalemap[((x * y) % scalemap.length)];
+    return basestr[((y) % basestr.length)];
 }
 let testCharmap: Charmap = new Charmap(0, generatorFunction);
 let testCharmap2: Charmap = new Charmap(0, generatorFunction2);
@@ -24,7 +25,7 @@ let newNode = document.createElement("div");
 newNode.id = "test";
 document.body.appendChild(newNode);
 
-const player = new TextPlayer(0, document.getElementById("test")!, testCharmap, 100, 100);
+const player = new TextPlayer(0, document.getElementById("test")!, testCharmap, 200, 100);
 
 setTimeout(() => {
     player.transitionFade(testCharmap2, () => {
@@ -37,3 +38,10 @@ setTimeout(() => {
         console.log("DONE!!");
     });
 }, 5000);
+
+
+setTimeout(() => {
+    player.transitionFade(testCharmap, () => {
+        console.log("DONE!!");
+    });
+}, 9000);

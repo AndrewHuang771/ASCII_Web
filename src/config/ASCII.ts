@@ -1,1 +1,1 @@
-export const scalemap = `$@B%&8WMNA#RKoaehkbdgpqwmEHGFPSZO0QLCDTJUVYXszcvunxryjift\\/|()1{}[]?*-_+~<>!lI;:,"^\`'. `;
+export const scalemap = `$@B%&8WMNA#RKoaehkbdgpqwmEHGFPSZO0QLCDTJUVYXszcvunxryjift\\/|()1{}[]?*=-_+~<>!lI;:,"^\`'. `;
