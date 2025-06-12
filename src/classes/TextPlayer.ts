@@ -53,15 +53,14 @@ export class TextPlayer {
         return scalemap[currentIdx + (difference / Math.abs(difference))];
     }
 
-    transitionFade(newCharmap: Charmap, callback?: Function) {
+    fadeInto(newCharmap: Charmap, callback?: Function) {
         this.charmap = newCharmap;
 
         clearInterval(this.currentInterval);
         clearInterval(this.transitionInterval);
-        let done = false;
         this.transitionInterval = setInterval(() => {
             // Each iteration of the interval represents a small shift towards the desired final frame. 
-            done = true;
+            let done = true;
             for (let x = 0; x < this.height; x++) {
                 for (let y = 0; y < this.width; y++) {
                     const targetPixel = this.charmap.getCharmapFramePixel(x, y, this.frame);

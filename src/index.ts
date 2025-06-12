@@ -1,6 +1,7 @@
 import { TextPlayer } from "./classes/TextPlayer";
 import { Charmap } from "./classes/Charmap";
 import { scalemap } from "./config/ASCII";
+import { text } from "./assets/test_long";
 import { createNoise3D, NoiseFunction3D } from "simplex-noise";
 
 // Create 2 configs for a framemap based on simplex noise
@@ -15,7 +16,16 @@ const generatorFunction2 = (x: number, y: number, t: number) => {
 }
 const basestr = "=UwU=";
 const generatorFunction3 = (x: number, y: number, t: number) => {
-    return basestr[((y) % basestr.length)];
+    if (x < text.length) {
+        if (y < text[x].length) {
+            return text[x][y];
+        }
+    }
+    return generatorFunction(x, y, t);
+    return scalemap[Math.floor(Math.random() * scalemap.length)];
+    // return scalemap[Math.floor((Math.sin(y) + 1) * scalemap.length) % scalemap.length];
+    // return Math.floor((Math.sin(y) + 1) * 10).toString();
+    // return basestr[((y) % basestr.length)];
 }
 let testCharmap: Charmap = new Charmap(0, generatorFunction);
 let testCharmap2: Charmap = new Charmap(0, generatorFunction2);
@@ -25,23 +35,22 @@ let newNode = document.createElement("div");
 newNode.id = "test";
 document.body.appendChild(newNode);
 
-const player = new TextPlayer(0, document.getElementById("test")!, testCharmap, 200, 100);
+const player = new TextPlayer(0, document.getElementById("test")!, testCharmap, 250, 100);
 
 setTimeout(() => {
-    player.transitionFade(testCharmap2, () => {
+    player.fadeInto(testCharmap2, () => {
         console.log("DONE!!");
     });
 }, 2000);
 
 setTimeout(() => {
-    player.transitionFade(testCharmap3, () => {
+    player.fadeInto(testCharmap3, () => {
         console.log("DONE!!");
     });
 }, 5000);
 
-
 setTimeout(() => {
-    player.transitionFade(testCharmap, () => {
+    player.fadeInto(testCharmap, () => {
         console.log("DONE!!");
     });
 }, 9000);
