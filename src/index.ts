@@ -16,13 +16,13 @@ const generatorFunction2 = (x: number, y: number, t: number) => {
 }
 
 const generatorFunction4 = (x: number, y: number, t: number) => {
-    if (t >= 1 && t <= 109) {
-        x -= Math.floor(t / 10);
-        y -= Math.floor(t / 10);
-    } else {
-        x -= 11;
-        y -= 11;
-    }
+    // if (t >= 1 && t <= 109) {
+    //     x -= Math.floor(t / 10);
+    //     y -= Math.floor(t / 10);
+    // } else {
+    x -= 11;
+    y -= 11;
+    // }
 
     if (x >= 0 && x < text.length) {
         if (y >= 0 && y < text[x].length) {
@@ -51,7 +51,7 @@ const rectangleFunctionFactory = (xMin: number, xMax: number, yMin: number, yMax
     return rectangleFunction;
 }
 
-const sampleRectGenFun = rectangleFunctionFactory(10, 40, 10, 100, generatorFunction2, generatorFunction);
+const sampleRectGenFun = rectangleFunctionFactory(10, 40, 10, 100, generatorFunction4, generatorFunction);
 const nestedRectFun = rectangleFunctionFactory(15, 25, 15, 30, generatorFunction, sampleRectGenFun)
 
 let testCharmap: Charmap = new Charmap(0, generatorFunction);
