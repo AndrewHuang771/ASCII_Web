@@ -29,4 +29,8 @@ export class Charmap {
         }
         return localCharmap;
     }
+
+    setGeneratorFunction(newGeneratorFunction: Function) {
+        this.generatorFunction = newGeneratorFunction;
+    }
 }

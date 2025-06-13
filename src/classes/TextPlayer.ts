@@ -84,6 +84,15 @@ export class TextPlayer {
         }, this.intervalDelay / 2);
     }
 
+    setGeneratorFunction(newGeneratorFunction: Function) {
+        this.charmap.setGeneratorFunction(newGeneratorFunction);
+    }
+
+    setCharmapTo(newCharmap: Charmap) {
+        this.frame = 1;
+        this.charmap = newCharmap;
+    }
+
     updateScreen() {
         this.screen = this.charmap.getCharmapFrame(0, this.height, 0, this.width, this.frame);
     }

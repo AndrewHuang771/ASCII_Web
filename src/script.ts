@@ -1,4 +1,4 @@
-import { readFileToCharArrays, exportArrayToTSFile } from "./utils/charmapEditor";
+import { readFileToCharArrays, readFileToCharArraysBinned, exportArrayToTSFile } from "./utils/charmapEditor";
 
-const text = readFileToCharArrays("./text/test_long.txt");
+const text = readFileToCharArraysBinned("./text/test_long.txt", 75);
 exportArrayToTSFile(text, "text", "./assets/test_long.ts");

@@ -16,6 +16,6 @@ body {
     color: var(--color-secondary);
     background-color: var(--color-primary);
     overflow: hidden;
-    white-space: nowrap;
+    white-space: pre;
     user-select: none;
 }
