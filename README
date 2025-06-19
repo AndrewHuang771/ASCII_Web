@@ -1,5 +1,6 @@
 To contribute: Clone repo and run npm install
 To run in watch mode: npx webpack --watch --mode development
+To run text generation script: npx ts-node <script>
 
 In progres:
 Actions
