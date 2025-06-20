@@ -1,37 +1,6 @@
-import { Charmap } from "../classes/Charmap";
-import { readFileSync, writeFileSync } from 'fs';
-import { resolve } from 'path';
-
-export function readFileToCharArrays(filePath: string): string[][] {
-    try {
-        const absolutePath = resolve(filePath);
-        const fileContents = readFileSync(absolutePath, 'utf-8');
-
-        const lines = fileContents.split(/\r?\n/); // Split into lines
-        const arrayOfCharArrays = lines.map(line => [...line]); // Split each line into characters
-
-        return arrayOfCharArrays;
-    } catch (err) {
-        console.error('Error reading file:', err);
-        return [];
-    }
-}
-
-export function readFileToCharArraysBinned(filePath: string, maxRowWidth: number): string[] {
-    try {
-        const absolutePath = resolve(filePath);
-        const fileContents = readFileSync(absolutePath, 'utf-8');
-
-        return splitPreservingWords(fileContents, maxRowWidth);
-    } catch (err) {
-        console.error('Error reading file:', err);
-        return [];
-    }
-}
-
 export function splitPreservingWords(input: string, maxLength: number): string[] {
     const rows: string[] = [];
-    let line = "";
+    let line = "    ";
 
     // Normalize CRLF (\r\n) and LF (\n) into a common token `\n` for easier handling
     const normalizedInput = input.replace(/\r\n/g, "\n");
@@ -72,17 +41,13 @@ export function splitPreservingWords(input: string, maxLength: number): string[]
         rows.push(line);
     }
 
-    return rows;
-}
-
-export function exportArrayToTSFile(array: string[], variableName: string, outputPath: string) {
-    const exportContent = `export const ${variableName} = ${JSON.stringify(array, null, 2)};\n`;
-    const fullPath = resolve(outputPath);
-
-    try {
-        writeFileSync(fullPath, exportContent, 'utf-8');
-        console.log(`Array written to ${fullPath} as export ${variableName}`);
-    } catch (err) {
-        console.error('Failed to write file:', err);
+    for (let x = 0; x < rows.length; x++) {
+        if (rows[x].length > 1) {
+            if (rows[x][0] == " " && rows[x][1] != " ") {
+                rows[x] = rows[x].trim();
+            }
+        }
     }
+
+    return rows;
 }

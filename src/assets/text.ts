@@ -1,4 +1,4 @@
-export const rawText = `I have a tale.
+export const rawTextStory = `I have a tale.
 I am Bacchus, and I am property of the honorable sir Francis Nicholls of Mansura. I was born in the fields on which I work and I was a strong and reliable worker, and my master placed me in charge of five other slaves and I delivered many harvests of cotton and sugar. My father was a carpenter, and he made furniture and tools for the household, and my mother served Arthur Nicholls, the master's son.
 My master's property spanned several acres along the Coulee Noire. We lived in wood cabins near the water and we slept on straw mats in rows of five with a fire to keep us warm. Further inland was my master's estate, and behind the estate the cotton fields stretched to the shore, and above us on the other side of the river rose a hill that towered over the plantation at the top of which stood a castle with high ramparts of white stone. My father often stared at it, and whenever I asked him he told me he was searching for the angels and the saints and the holy martyrs. But I did not know who lived there or indeed if anyone lived there, for we were not allowed to leave the property.
 My tale begins when one day a messenger came across the water. It was autumn and the ground was golden and it was cold and clear, and cotton dotted the fields like snow. The master had gathered the members of his household and was waiting by the shore. We went about our work, but often paused to gaze curiously down at the water.
@@ -6,3 +6,14 @@ A little past noon, a small boat landed on the shore of the plantation. My maste
 "Lord Nicholls," she said. "You must allow us to stay for tea."
 The master held out his arm and she took it and they walked together up the dusty path through the fields to the estate. My mother and some of the other household servants held straw parasols, and under their shade trailed the master's wife and son and a large man in a grey uniform with a sabre at his waist and a parcel in his hands wrapped in silver cloth.
 "And really," she said, "you can't see a thing from the Castle. But the fields are so much prettier this side of the river."`
+
+export const rawTextStory2 = `The maker held his brush delicately as he painted two small black circles on the robot’s metal faceplate. The robot was about two feet tall, and gleaming silver metal all bright and reflective, with lights that blinked on its chest above its red ceramic heart. With a final tap of its head the robot shuddered into motion and looked around until its curious eyes settled on the maker.
+“Ahoy there!” the maker said.
+He pointed to a stack of carbon nano-modules.
+“I’ve made you from those dead things there and now you’re alive!”
+The little thing buzzed back at him.
+“Oh you’ll have plenty of time,” said the maker, “about eighty-five years or so.”
+Another buzz.
+“What should you do? Oh well I have no idea. Your last generation spent their entire lives building these wonderful statues. I was rather fond of them.”
+The little thing began to chirp angrily and ran headlong into the maker’s shin-plates with a clang.
+“Oh come off it!” he said. “No purpose? All these books around you and you won’t even bat an eye at them. Look!” He pulled a large red book off the shelf with yellowing pages. “The Condensed Revised Second Edition of the Complete History of the Byzantine Empire and the Persian Steppe by Arnold Tranze. Or this,” he reached up and picked a loose stack of papers poorly stapled together off the top of the TV, “A Treatise on the Relation between Set Theory and Garden Gnomes,” He ruffled the papers; why there’s enough here for a lifetime of reading, many many lifetimes in fact.” He stretched his arms wide. “Oh how jealous I am, how enormously envious I am of you. So many things to do! So many things to become!”`

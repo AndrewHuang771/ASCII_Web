@@ -1,56 +1,11 @@
 import { NoiseFunction3D, createNoise3D } from "simplex-noise";
 import { RectangleFactory, StaticFactory } from "./classes/Factory";
 
+import { splitPreservingWords } from "./utils/charmapEditor";
 import { Charmap } from "./classes/Charmap";
 import { TextPlayer } from "./classes/TextPlayer";
 import { scalemap } from "./config/ASCII";
-import { rawText } from "./assets/text";
-
-function splitPreservingWords(input: string, maxLength: number): string[] {
-    const rows: string[] = [];
-    let line = "";
-
-    // Normalize CRLF (\r\n) and LF (\n) into a common token `\n` for easier handling
-    const normalizedInput = input.replace(/\r\n/g, "\n");
-
-    // Tokenize: words, whitespace, and newlines
-    const tokens = normalizedInput.match(/[^\s\n]+|\s+|\n/g) || [];
-
-    for (const token of tokens) {
-        if (token === "\n") {
-            // Force line break on newline
-            rows.push(line);
-            line = "    ";
-        } else if ((line + token).length > maxLength) {
-            if (line.length > 0) {
-                rows.push(line);
-                line = "";
-            }
-
-            if (token.trim() === "") {
-                // Just whitespace — move it to new line if possible
-                line = token;
-            } else if (token.length > maxLength) {
-                // Word is longer than line — break it into chunks
-                const parts = token.match(new RegExp(`.{1,${maxLength}}`, 'g'))!;
-                rows.push(...parts.slice(0, -1));
-                line = parts[parts.length - 1];
-            } else {
-                // Start new line with token
-                line = token;
-            }
-        } else {
-            // Safe to append token
-            line += token;
-        }
-    }
-
-    if (line.length > 0) {
-        rows.push(line);
-    }
-
-    return rows;
-}
+import { rawTextStory, rawTextStory2 } from "./assets/text";
 
 // let ruler = document.createElement("div");
 // ruler.innerText = "a";
@@ -62,13 +17,15 @@ function splitPreservingWords(input: string, maxLength: number): string[] {
 
 let canvasWidth = Math.ceil(window.innerWidth / 8.8);
 let canvasHeight = Math.ceil(window.innerHeight / 16);
+let textWidth = 60;
 
-function generateTexts() {
+function generateTexts(text: string) {
     // Given a canvasWidth, generate the text
-    return splitPreservingWords(rawText, 60);
+    return splitPreservingWords(text, textWidth);
 }
 
-const text = generateTexts();
+const text1 = generateTexts(rawTextStory);
+const text2 = generateTexts(rawTextStory2);
 
 // Create 2 configs for a framemap based on simplex noise
 const noise3D: NoiseFunction3D = createNoise3D();
@@ -82,15 +39,17 @@ const staticFactory = new StaticFactory();
 
 // Factories return a function that accepts (x, y, t) and returns a value per pixel
 const parentWidth = Math.floor(canvasWidth / 3);
-let maxTextWidth = 0;
-for (let x = 0; x < text.length; x++) {
-    maxTextWidth = Math.max(maxTextWidth, text[x].length);
-}
-const staticFunction = staticFactory.build(3, 40, Math.floor((parentWidth - maxTextWidth) / 2), maxTextWidth + Math.floor((parentWidth - maxTextWidth) / 2) + 1, text, () => { return " " }, () => { return " " });
+
+const staticFunction = staticFactory.build(3, 40, Math.floor((parentWidth - textWidth) / 2), textWidth + Math.floor((parentWidth - textWidth) / 2) + 1, text1, () => { return " " }, () => { return " " });
 const rectWrapper = rectFactory.build(5, canvasHeight - 10, Math.floor(canvasWidth / 3), Math.floor(2 * canvasWidth / 3), staticFunction, generatorFunction);
+
+const staticFunction2 = staticFactory.build(3, 40, Math.floor((parentWidth - textWidth) / 2), textWidth + Math.floor((parentWidth - textWidth) / 2) + 1, text2, () => { return " " }, () => { return " " });
+const rectWrapper2 = rectFactory.build(5, canvasHeight - 10, Math.floor(canvasWidth / 3), Math.floor(2 * canvasWidth / 3), staticFunction2, generatorFunction);
+
 
 let testCharmap: Charmap = new Charmap(0, generatorFunction);
 let testCharmap2: Charmap = new Charmap(0, rectWrapper);
+let testCharmap3: Charmap = new Charmap(0, rectWrapper2);
 
 let newNode = document.createElement("div");
 newNode.id = "test";
@@ -103,3 +62,10 @@ setTimeout(() => {
         console.log("DONE!!");
     });
 }, 2000);
+
+setTimeout(() => {
+    console.log("ASDASD");
+    player.fadeInto(testCharmap3, () => {
+        console.log("DONE!!");
+    });
+}, 7000);

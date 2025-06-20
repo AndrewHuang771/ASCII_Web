@@ -47,7 +47,11 @@ export class TextPlayer {
         let targetIdx = scalemap.indexOf(targetPixel);
         let currentIdx = scalemap.indexOf(currentPixel);
         if (targetIdx == -1) {
-            targetIdx = Math.floor(scalemap.length / 2);
+            // If the target pixel doesn't exist in the scalemap, give a 25% chance of rendering it.
+            if (Math.random() <= 0.05) {
+                return targetPixel;
+            }
+            return scalemap[(currentIdx + 1) % scalemap.length];
         }
         const difference = targetIdx - currentIdx;
         return scalemap[currentIdx + (difference / Math.abs(difference))];
